@@ -6,9 +6,10 @@ import { useCardsStore } from "../stores/cardState";
 export default {
   setup() {
     const store = useCardsStore();
-    const { cardsInfo } = storeToRefs(store);
+    const { cardsInfo, fetched } = storeToRefs(store);
     return {
       cardsInfo,
+      fetched,
     };
   },
   components: {
@@ -21,24 +22,31 @@ export default {
   },
   computed: {},
   mounted() {
-    this.cardsInfo = [
-      [
-        {
-          name: "Jim",
-          gender: "male",
-        },
-        {
-          name: "Jim",
-          birthdate: "1974-12-15",
-        },
-      ],
-      [
-        {
-          name: "Jim",
-          address: "534 Erewhon St, PleasntVille, Rainbow, Viz, 3999",
-        },
-      ],
-    ];
+    if (!this.fetched) {
+      fetch("https://build.fhir.org/patient-example.json")
+        .then((response) => response.json())
+        .then((data) => {
+          this.cardsInfo = [
+            [
+              {
+                name: data.name[1].given[0],
+                gender: data.gender,
+              },
+              {
+                name: data.name[1].given[0],
+                birthdate: data.birthDate,
+              },
+            ],
+            [
+              {
+                name: data.name[1].given[0],
+                address: data.address[0].text,
+              },
+            ],
+          ];
+          this.fetched = true;
+        });
+    }
   },
 };
 </script>
