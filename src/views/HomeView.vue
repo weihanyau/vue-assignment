@@ -18,14 +18,14 @@ export default {
 </script>
 
 <template>
-  <div class="container">
+  <div class="wrapper">
     <p>Hello this is the onboarding assignment!</p>
     <p>Current Time: {{ currentTime }}</p>
   </div>
 </template>
 
 <style scoped>
-.container {
+.wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
