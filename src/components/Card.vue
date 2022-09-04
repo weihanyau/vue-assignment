@@ -1,17 +1,24 @@
 <script>
 export default {
+  //I wanted to make name required but I dont think this is possible with object
   props: ["cardInfo"],
 };
 </script>
 
 <template>
   <div class="card" draggable="true">
-    <p v-if="cardInfo.name" class="info">Name: {{ cardInfo.name }}</p>
-    <p v-if="cardInfo.gender" class="info">Gender: {{ cardInfo.gender }}</p>
-    <p v-if="cardInfo.birthdate" class="info">
-      BirthDate:{{ cardInfo.birthdate }}
+    <p class="info name">
+      Name: {{ cardInfo.name ? cardInfo.name : "no name" }}
     </p>
-    <p v-if="cardInfo.address" class="info">Address: {{ cardInfo.address }}</p>
+    <p v-if="cardInfo.gender" class="info gender">
+      Gender: {{ cardInfo.gender }}
+    </p>
+    <p v-if="cardInfo.birthdate" class="info birthdate">
+      BirthDate: {{ cardInfo.birthdate }}
+    </p>
+    <p v-if="cardInfo.address" class="info address">
+      Address: {{ cardInfo.address }}
+    </p>
   </div>
 </template>
 

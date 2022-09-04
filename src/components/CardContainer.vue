@@ -20,11 +20,6 @@ export default {
       this.cardsInfo[this.index].push(card);
     },
   },
-  watch: {
-    cardsInfo: (val) => {
-      console.log(val);
-    },
-  },
 };
 </script>
 
@@ -39,6 +34,8 @@ export default {
       v-for="(info, cardIndex) in cardsInfo[index]"
       @dragstart="onDrag($event, cardIndex)"
       :cardInfo="info"
+      :key="info.id"
+      :id="`card${info.id}`"
     />
   </div>
 </template>

@@ -4,8 +4,8 @@ import { RouterLink, RouterView } from "vue-router";
 
 <template>
   <nav id="navbar">
-    <RouterLink to="/">Home</RouterLink>
-    <RouterLink to="/dragDrop">Drag & Drop</RouterLink>
+    <RouterLink to="/" class="homeBtn">Home</RouterLink>
+    <RouterLink to="/dragDrop" class="dragDropBtn">Drag & Drop</RouterLink>
   </nav>
   <RouterView />
 </template>

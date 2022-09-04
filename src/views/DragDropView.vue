@@ -29,16 +29,19 @@ export default {
           this.cardsInfo = [
             [
               {
+                id: 1,
                 name: data.name[1].given[0],
                 gender: data.gender,
               },
               {
+                id: 2,
                 name: data.name[1].given[0],
                 birthdate: data.birthDate,
               },
             ],
             [
               {
+                id: 3,
                 name: data.name[1].given[0],
                 address: data.address[0].text,
               },
@@ -53,8 +56,8 @@ export default {
 
 <template>
   <div class="wrapper">
-    <CardContainer :cardsInfo="this.cardsInfo" :index="0" />
-    <CardContainer :cardsInfo="this.cardsInfo" :index="1" />
+    <CardContainer :cardsInfo="this.cardsInfo" :index="0" id="container1" />
+    <CardContainer :cardsInfo="this.cardsInfo" :index="1" id="container2" />
   </div>
 </template>
 
